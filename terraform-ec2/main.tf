@@ -7,7 +7,7 @@ resource "aws_instance" "demo-instance" {
     "${aws_security_group.allow_outbound.name}"
   ]
   provisioner "local-exec" {
-    command = "echo ${aws_instance.demo-instance.private_ip} ansible_user=ec2-user  > /etc/ansible/hosts ; sleep 20  && ansible-playbook /root/deploy.yaml -e ipaddress=${aws_instance.demo-instance.private_ip}"
+    command = "echo ${aws_instance.demo-instance.private_ip} ansible_user=ec2-user  > /etc/ansible/hosts ; sleep 20  && ansible-playbook ../ansible/deploy.yaml -e ipaddress=${aws_instance.demo-instance.private_ip}"
   }
   tags {
     Name = "fa_java-webapp-demo"
