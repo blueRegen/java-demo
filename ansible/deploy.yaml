@@ -1,0 +1,20 @@
+- hosts: "{{ ipaddress }}"
+  become: yes
+  tasks:
+   - name: install java
+     yum:
+      name: java-1.8.0-openjdk-headless
+      state: latest
+
+   - name: create app directory
+     file: 
+       path: /app/demo/
+       state: directory
+
+   - name: copy app package
+     copy:
+      src: /var/lib/jenkins/workspace/build-stage/target/spring-boot-web-0.0.1-SNAPSHOT.jar
+      dest: /app/demo/
+
+   - name: run the app
+     shell: nohup java -jar /app/demo/spring-boot-web-0.0.1-SNAPSHOT.jar --server.port=80 &
