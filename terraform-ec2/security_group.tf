@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_ssh_http" {
-  name        = "allow-ssh_http"
+  name        = "fa-allow-ssh_http"
   description = "Allow SSH & http inbound traffic"
 
   ingress {
@@ -17,7 +17,7 @@ resource "aws_security_group" "allow_ssh_http" {
 }
 
 resource "aws_security_group" "allow_outbound" {
-  name        = "allow-all-outbound"
+  name        = "fa-allow-all-outbound"
   description = "Allow all outbound traffic"
 
   egress {
